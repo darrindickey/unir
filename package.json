@@ -1,0 +1,12 @@
+{
+  "name": "unir",
+  "version": "1.0.0",
+  "description": "A simple full-stack react web, react-native starter application.",
+  "main": "index.js",
+  "author": "Darrin T. Dickey",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r dotenv/config src/index.js",
+    "test": "test"
+  }
+}
