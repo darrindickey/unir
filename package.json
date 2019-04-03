@@ -5,8 +5,51 @@
   "main": "index.js",
   "author": "Darrin T. Dickey",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darrindickey/unir.git"
+  },
+  "engines": {
+    "node": ">= 10.15.3",
+    "npm": ">= 6.9.0",
+    "yarn": ">= 1.12.3"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 9"
+  ],
+  "dependencies": {
+    "babel-loader": "^8.0.5",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "express-generator": "^4.16.0",
+    "nodemon": "^1.18.10",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.5",
+    "react-hot-loader": "^4.8.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/polyfill": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "eslint": "^5.15.3",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
   "scripts": {
-    "start": "node -r dotenv/config src/index.js",
+    "build-server": "webpack --config ./webpack-server.config.js",
+    "build-web": "webpack-dev-server --config ./webpack-web.config.js",
+    "start-server": "nodemon ./build/bundle-server.js",
+    "start-server-dev": "nodemon server.js",
+    "start-web-client": "nodemon ./web/index.js",
+    "start-mobile-client": "yarn start",
+    "server": "concurrently \"yarn build-server && yarn start-server\"",
+    "web": "concurrently \"yarn build-web\" \"yarn start-web-client\"",
+    "mobile": "concurrently \"start server\" \"cd mobile && start mobile client\"",
     "test": "test"
   }
 }
