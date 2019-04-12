@@ -36,19 +36,16 @@
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "eslint": "^5.15.3",
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
   },
   "scripts": {
     "build-server": "webpack --config ./webpack-server.config.js",
-    "build-web": "webpack-dev-server --config ./webpack-web.config.js",
-    "start-server": "nodemon ./build/bundle-server.js",
-    "start-server-dev": "nodemon server.js",
-    "start-web-client": "nodemon ./web/index.js",
-    "start-mobile-client": "yarn start",
-    "server": "concurrently \"yarn build-server && yarn start-server\"",
-    "web": "concurrently \"yarn build-web\" \"yarn start-web-client\"",
+    "build-web": "webpack -d --watch --config ./webpack-web.config.js",
+    "build": "concurrently \"yarn build-server && yarn build-web\"",
+    "start": "yarn build && node src/server/dist/server.bundle.js",
     "mobile": "concurrently \"start server\" \"cd mobile && start mobile client\"",
     "test": "test"
   }
