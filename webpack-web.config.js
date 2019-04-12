@@ -6,11 +6,12 @@ const ROOT_DIR = path.resolve(__dirname)
 const resolvePath = (...args) => path.resolve(ROOT_DIR, ...args)
 const WEB_DIR = resolvePath('src/web')
 const WEB_DIST_DIR = resolvePath('src/web/dist')
-console.log('TEST', path.resolve(WEB_DIR))
+
 module.exports = {
   target: 'web',
+  // mode: 'development',
   entry: {
-    app: ['@babel/polyfill', path.resolve(path.join(WEB_DIR, './index.js'))]
+    app: [path.resolve(path.join(WEB_DIR, './index.js'))]
   },
   output: {
     path: path.resolve(WEB_DIST_DIR),
@@ -31,9 +32,13 @@ module.exports = {
       }],
     }],
   },
-  plugins: [ new HtmlWebpackPlugin({
-    title: 'Initial UNIR UI',
-    filename: path.join(WEB_DIR, 'index.html')
-  }) ],
+  plugins: [ 
+    new HtmlWebpackPlugin({
+      title: 'Initial UNIR UI',
+      pageHeader: 'Welcome',
+      template: path.join(WEB_DIR, 'template.html'),
+      filename: path.join(WEB_DIR, 'index.html')
+    }),
+  ],
   devtool: 'inline-source-map',
 };
