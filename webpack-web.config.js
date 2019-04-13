@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const ROOT_DIR = path.resolve(__dirname)
 const resolvePath = (...args) => path.resolve(ROOT_DIR, ...args)
-const WEB_DIR = resolvePath('src/web')
-const WEB_DIST_DIR = resolvePath('src/web/dist')
+const WEB_DIR = resolvePath('web')
+const WEB_DIST_DIR = resolvePath('web/dist')
 
 module.exports = {
   target: 'web',

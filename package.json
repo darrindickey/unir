@@ -46,7 +46,7 @@
     "build-server": "webpack --config ./webpack-server.config.js",
     "build-web": "webpack --config ./webpack-web.config.js",
     "build": "concurrently \"yarn build-server && yarn build-web\"",
-    "start": "yarn build && node src/server/dist/server.bundle.js",
+    "start": "yarn build && nodemon server/dist/server.bundle.js",
     "mobile": "concurrently \"start server\" \"cd mobile && start mobile client\"",
     "test": "test"
   }

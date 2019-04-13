@@ -4,8 +4,8 @@ const nodeExternals = require('webpack-node-externals')
 
 const ROOT_DIR = path.resolve(__dirname)
 const resolvePath = (...args) => path.resolve(ROOT_DIR, ...args)
-const SERVER_DIR = resolvePath('src/server')
-const SERVER_DIST_DIR = resolvePath('src/server/dist')
+const SERVER_DIR = resolvePath('server')
+const SERVER_DIST_DIR = resolvePath('server/dist')
 
 module.exports = {
   target: 'node',
